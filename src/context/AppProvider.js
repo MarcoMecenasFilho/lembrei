@@ -7,13 +7,6 @@ export default function AppProvider({ children }) {
   const [actualList, setActualList ] = useState([]);
   const [idGlobal, setIdGlobal] = useState(0)
 
-  useEffect(() => {
-    if(localStorage.getItem("list")) {
-      const listLocal = JSON.parse(localStorage.getItem('list'))
-      setActualList(listLocal.buyList)
-      setIdGlobal(listLocal.idProduct)
-    }}, []);
-
   const context = {
     actualList,
     setActualList,

@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react';
+import { useEffect } from 'react';
 import AppContext from '../context/AppContext';
 import subcategoryFunction from '../services/subcategoryFunction';
 
@@ -15,6 +16,13 @@ export default function Header() {
   const [validate, setValidate] =useState(false);
   const {actualList, setActualList, idGlobal,
     setIdGlobal } = useContext(AppContext);
+
+    useEffect(() => {
+      if(localStorage.getItem("list")) {
+        const listLocal = JSON.parse(localStorage.getItem('list'))
+        setActualList(listLocal.buyList)
+        setIdGlobal(listLocal.id)
+      }}, []);
 
   function handleChange({ target }) {
     if(target.name === "subcategory") {
