@@ -4,7 +4,17 @@ import AppContext from '../context/AppContext';
 
 
 export default function TodoList() {
-  const {actualList, setActualList } = useContext(AppContext);
+  const {actualList, setActualList, idGlobal } = useContext(AppContext);
+
+  function deleteProduct({target}) {
+    const listFiltered = actualList.filter((ids) => (Number(target.value) !== ids.idProduct
+      ))
+    setActualList(listFiltered)
+    localStorage.setItem('list', JSON.stringify({
+      buyList: listFiltered,
+      id: idGlobal,
+    }))
+  }
   
   return (
     <div>
@@ -21,7 +31,7 @@ export default function TodoList() {
           <p>{elem.note}</p>
           <input type="checkbox" />
           <button type="button">Edit</button>
-          <button type="submit">Delete</button>
+          <button type="button" value={elem.idProduct} onClick={(e) => deleteProduct(e)} >Delete</button>
           </div>
         ))}
       </div>
