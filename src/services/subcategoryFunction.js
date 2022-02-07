@@ -1,5 +1,6 @@
 const subcategoryObj = {
-  Bebidas: ["aasasasas","sdsd", "asasakikikikisas"],
+  categoria: [],
+  Bebidas: ["aasasasas","sdsd", "asasakikikikisas", "Outros"],
   Carnes: ["3434a","sdsd", "asasasas"],
   Frios: ["a67u67u","sdsd", "asasasa445454s"],
   Higiene: ["a545","sds4545d", "asasasas"],
@@ -11,7 +12,7 @@ const subcategoryObj = {
   Padaria: ["a67rftyr","sdst5t5d", "asasasas"], 
   PetShop: ["ajtyu5676","sdst5t5d", "asasasas"], 
   Utilidades_Domésticas: ["a","sdskiikd", "asaikikisasas"],
-  Outros: ["Outros"],
+  Outros: [],
 }
 
 
