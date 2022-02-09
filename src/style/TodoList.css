@@ -1,44 +1,6 @@
-
-input[type="checkbox"] {
-  height: 10px; 
-  width: 10px; 
-  background-color: rgb(0, 0, 0);
-  position: relative;
-  outline: none;
-  transform: rotate(45deg);
-  -webkit-appearance: none; 
-}
-
-input[type="checkbox"]:before {
-  position: absolute;
-  content: "";
-  background-color: rgb(0, 0, 0);
-  height: 60%;
-  width: 100%;
-  top: -59%;
-  border-radius: 75px 75px 0 0;
-}
-
-input[type="checkbox"]:after {
-  position: absolute;
-  content: "";
-  background-color: rgb(0, 0, 0);
-  height: 60%;
-  width: 100%;
-  transform: rotate(-90deg);
-  border-radius: 75px 75px 0 0;
-  top: 20%;
-  right: 79%;
-}
-
-input[type="checkbox"]:checked,
-input[type="checkbox"]:checked:before,
-input[type="checkbox"]:checked:after{
-  background-color: red;
-}
-
 .scratched {
-  text-decoration: line-through red;
+  text-decoration: line-through black;
+  background-color: rgb(221, 115, 115);
 }
 
 .table-list {
@@ -49,6 +11,11 @@ input[type="checkbox"]:checked:after{
   
 tr {
   align-items: center;
+}
+
+th p {
+  text-align: center;
+  margin: 0;
 }
 
 td {

@@ -18,19 +18,19 @@ export default function TodoList() {
   }, [])
 
   function deleteProduct({target}) {          
+    const listFiltered = actualList.filter((ids) => (Number(target.value) !== ids.idProduct
+    ))
+    setActualList(listFiltered)
+    localStorage.setItem('list', JSON.stringify({
+      buyList: listFiltered,
+      id: idGlobal,
+    }))
     const checkboxFiltered = checkboxList.filter((elem) => (
       elem !== target.value
     ))
     setCheckboxList(checkboxFiltered)
     localStorage.setItem('checkbox-items', JSON.stringify(checkboxFiltered))
-    const listFiltered = actualList.filter((ids) => (Number(target.value) !== ids.idProduct
-      ))
-      setActualList(listFiltered)
-      localStorage.setItem('list', JSON.stringify({
-        buyList: listFiltered,
-        id: idGlobal,
-      }))
-      document.location.reload()
+      // document.location.reload()
   }
 
   
@@ -73,7 +73,7 @@ export default function TodoList() {
             <tr>
               <th>#</th>
               {tableHeader.map((elem, index) => (
-                <th key={index}>{elem}</th>
+                <th key={index}><p>{elem}</p></th>
               ))}
             </tr>
         </thead>
@@ -89,7 +89,7 @@ export default function TodoList() {
             <td><p>{elem.unit}</p></td>
             <td><p>{elem.note}</p></td>
             <td>
-              <input type="checkbox" value={elem.idProduct} onClick={(e) => cheboxLocal(e)} checked={checkedBox(elem.idProduct,) } />
+              <button type='button ' value={elem.idProduct} onClick={(e) => cheboxLocal(e)}>Comprado</button>
             </td>
             <td>
               <button type="button" value={elem.idProduct} onClick={(e) => deleteProduct(e)} >Delete</button>
