@@ -6,12 +6,15 @@ export default function AppProvider({ children }) {
 
   const [actualList, setActualList ] = useState([]);
   const [idGlobal, setIdGlobal] = useState(0)
+  const [checkboxList, setCheckboxList] = useState([])
 
   const context = {
     actualList,
     setActualList,
     idGlobal,
-    setIdGlobal
+    setIdGlobal,
+    checkboxList, 
+    setCheckboxList
   };
 
   return (

@@ -2,18 +2,27 @@ import React, {useContext} from 'react';
 import { useEffect } from 'react';
 import Header from '../components/Header';
 import AppContext from '../context/AppContext';
+import '../style/TodoList.css'
+import Table from 'react-bootstrap/Table';
 
 
 export default function TodoList() {
-  const {actualList, setActualList, idGlobal } = useContext(AppContext);
+  const {actualList, setActualList, idGlobal, checkboxList, setCheckboxList } = useContext(AppContext);
 
   useEffect(() => {
     if(!localStorage.getItem('checkbox-items')) {
       localStorage.setItem('checkbox-items', JSON.stringify([]))
     }
+    const checkList = JSON.parse(localStorage.getItem("checkbox-items"))
+      setCheckboxList(checkList)
   }, [])
 
-  function deleteProduct({target}) {
+  function deleteProduct({target}) {          
+    const checkboxFiltered = checkboxList.filter((elem) => (
+      elem !== target.value
+    ))
+    setCheckboxList(checkboxFiltered)
+    localStorage.setItem('checkbox-items', JSON.stringify(checkboxFiltered))
     const listFiltered = actualList.filter((ids) => (Number(target.value) !== ids.idProduct
       ))
       setActualList(listFiltered)
@@ -21,57 +30,82 @@ export default function TodoList() {
         buyList: listFiltered,
         id: idGlobal,
       }))
-      
-    const checkboxStore = JSON.parse(localStorage.getItem('checkbox-items'))
-    const checkboxFiltered = checkboxStore.filter((elem) => (
-      elem !== target.value
-    ))
-
-    localStorage.setItem('checkbox-items', JSON.stringify(checkboxFiltered))
+      document.location.reload()
   }
 
   
   function cheboxLocal({target}) {
-    const checkboxStore = JSON.parse(localStorage.getItem('checkbox-items'))
-    console.log(target.value)
-    if(checkboxStore.some((id) => Number(id) === Number(target.value))) {
-      const checkboxFiltered = checkboxStore.filter((elem) => (
+    if(!checkboxList.some((id) => Number(id) === Number(target.value))) {
+      setCheckboxList([...checkboxList, target.value])
+      localStorage.setItem('checkbox-items', JSON.stringify([...checkboxList, target.value]))
+    }
+    if(checkboxList.some((id) => Number(id) === Number(target.value))) {
+      const checkboxFiltered = checkboxList.filter((elem) => (
         elem !== target.value
       ))
-
+        setCheckboxList(checkboxFiltered)
       localStorage.setItem('checkbox-items', JSON.stringify(checkboxFiltered))
     }
-    if(!checkboxStore.some((id) => Number(id) === Number(target.value))) {
-      localStorage.setItem('checkbox-items', JSON.stringify([...checkboxStore, target.value]))
+    console.log(checkedBox(target.value))
+  }
+  
+  function checkedBox(idvalue) {  
+    const result = checkboxList.some((id) => Number(idvalue) ===  Number(id))    
+    if(result) {
+      return true
     }
   }
 
-  function checkedBox(value) {
-    const checkboxStore = JSON.parse(localStorage.getItem('checkbox-items'))
-    if (checkboxStore.some((id) => Number(id) === Number(value))) {
-      return true;
-    }
-  }
-  
+  const tableHeader = [
+    "Categoria",
+    "Subcategoria",
+    "Quantidade",
+    "Unidade",
+    "Observação",
+    "Comprado",
+    "Deletar"
+  ]
+
+  const list = (
+    <div className='="table-list' >
+      <Table responsive striped bordered hover>
+        <thead>
+            <tr>
+              <th>#</th>
+              {tableHeader.map((elem, index) => (
+                <th key={index}>{elem}</th>
+              ))}
+            </tr>
+        </thead>
+      <tbody>
+        {actualList.map((elem, index) => (
+          <tr key={index} className= {checkedBox(elem.idProduct) && "scratched" } >
+            <td><p>{index}</p></td>
+            {elem.categoryText === "" ? <td><p>{elem.category}</p></td> :
+            <td><p>{elem.categoryText}</p></td>}
+            {elem.subcategoryText === "" ? (<td><p>{elem.subcategory}</p></td>) :
+            (<td><p>{elem.subcategoryText}</p></td>)}
+            <td><p>{elem.quantity}</p></td>
+            <td><p>{elem.unit}</p></td>
+            <td><p>{elem.note}</p></td>
+            <td>
+              <input type="checkbox" value={elem.idProduct} onClick={(e) => cheboxLocal(e)} checked={checkedBox(elem.idProduct,) } />
+            </td>
+            <td>
+              <button type="button" value={elem.idProduct} onClick={(e) => deleteProduct(e)} >Delete</button>
+            </td>
+          </tr>
+      ))}
+        
+      </tbody>
+    </Table>
+  </div>   
+  )
+
   return (
     <div>
       <Header />
-      <div>
-        {actualList.map((elem) => (
-          <div style={{display: "flex"}}>
-          {elem.categoryText === "" ? <p>{elem.category}</p> :
-          <p>{elem.categoryText}</p>}
-          {elem.subcategoryText === "" ? (<p>{elem.subcategory}</p>) :
-          (<p>{elem.subcategoryText}</p>)}
-          <p>{elem.quantity}</p>
-          <p>{elem.unit}</p>
-          <p>{elem.note}</p>
-          <input type="checkbox" value={elem.idProduct} checked={checkedBox(elem.idProduct)}  onClick={(e) => cheboxLocal(e)} />
-          <button type="button">Edit</button>
-          <button type="button" value={elem.idProduct} onClick={(e) => deleteProduct(e)} >Delete</button>
-          </div>
-        ))}
-      </div>
+      {list}
     </div>
   );
 }

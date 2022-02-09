@@ -91,7 +91,7 @@ export default function Header() {
   return (
   <div>
     <form onSubmit={ (e) => clickSubmit(e) }>
-      <select onChange={(e) => handleCategory(e)} name="category">
+      <select onChange={(e) => handleCategory(e)} name="category" required>
         <option value="categoria">Categoria</option>
         {categories.map((category) => (
           <option value={category}>{category}</option>
@@ -103,7 +103,7 @@ export default function Header() {
           <input value={subcategoryText} name="subcategoryOther" type="text" onChange={ (e) => handleChange(e)} placeholder='Subcategoria' required />
         </>
       ) : (
-        <select name="subcategory" onChange={(e) => handleChange(e)}>
+        <select name="subcategory" onChange={(e) => handleChange(e)} required>
           <option>Subcategoria</option>
           {validate && subcategories.map((subcat) => (
             <option value={subcat}>{subcat}</option>
