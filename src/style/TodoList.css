@@ -6,7 +6,7 @@
 }
 .scratched {
   text-decoration: line-through black;
-  background-color: rgb(221, 115, 115);
+  background-color: rgb(102, 255, 0);
 }
 .table-list {
   align-items: flex-start;
@@ -68,8 +68,8 @@ th p {
 
 td {
   text-align: center;
-  max-width: 200px;
-  word-break: break-word;
+  /* max-width: 200px; */
+  /* word-break: break-word; */
   vertical-align: middle;
 }
 

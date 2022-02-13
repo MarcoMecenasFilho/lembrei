@@ -1,10 +1,12 @@
+import { bebidas, carnes, frios} from '../services/datas'
+
 const subcategoryObj = {
   categoria: [],
-  Bebidas: ["aasasasas","sdsd", "asasakikikikisas", "Outros"],
-  Carnes: ["3434a","sdsd", "asasasas"],
-  Frios: ["a67u67u","sdsd", "asasasa445454s"],
+  Bebidas: bebidas,
+  Carnes: carnes,
+  Frios: frios,
   Higiene: ["a545","sds4545d", "asasasas"],
-  Hortifruit: ["akiki","skikikdsd", "asasasas"],
+  Hortifruti: ["akiki","skikikdsd", "asasasas"],
   Laticínios: ["kikika","sdt5t5tsd", "asasasas"], 
   Limpeza: ["aikik","sdsd", "asasasas"],
   Matinais: ["aiki","sdsd", "asasast4555as"], 

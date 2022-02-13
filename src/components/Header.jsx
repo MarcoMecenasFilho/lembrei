@@ -87,7 +87,7 @@ export default function Header() {
           </Form.Select>
           {category !== "Outros" && (
             <Form.Select  name="subcategory" onChange={(e) => handleChange(e)} required>
-            <option>Subcategoria</option>
+            <option>Nome</option>
             {validate && subcategories.map((subcat) => (
               <option value={subcat}>{subcat}</option>
             ))}
@@ -103,7 +103,7 @@ export default function Header() {
               </FloatingLabel>
               <FloatingLabel
               controlId="floatingInput"
-              label="Digite a subcategoria"
+              label="Digite o nome"
               className="mb-3 input" >
                 <Form.Control  value={subcategoryText} name="subcategoryOther" type="text" onChange={ (e) => handleChange(e)} placeholder='Digite a subcategoria' required  />
               </FloatingLabel>
@@ -113,8 +113,8 @@ export default function Header() {
             <>
                 <FloatingLabel
               controlId="floatingInput"
-              label="Digite a subcategoria"
-              className="mb-3 ">
+              label="Digite o nome"
+              className="mb-3 input">
                 <Form.Control value={subcategoryText} name="subcategoryOther" type="text" onChange={ (e) => handleChange(e)} placeholder='Digite a subcategoria' required  />
               </FloatingLabel>
             </>
