@@ -1,52 +1,46 @@
 import React, {useContext} from 'react';
-import { useEffect } from 'react';
 import Header from '../components/Header';
 import AppContext from '../context/AppContext';
 import '../style/TodoList.css'
 import Table from 'react-bootstrap/Table';
+import { tableHeader } from '../services/datas';
+import { setLocalStore } from '../services/localStorageFunctions';
+import { useState } from 'react';
 
 
 export default function TodoList() {
-  const {actualList, setActualList, idGlobal, checkboxList, setCheckboxList } = useContext(AppContext);
-
-  useEffect(() => {
-    if(!localStorage.getItem('checkbox-items')) {
-      localStorage.setItem('checkbox-items', JSON.stringify([]))
-    }
-    const checkList = JSON.parse(localStorage.getItem("checkbox-items"))
-      setCheckboxList(checkList)
-  }, [])
-
+  const {actualList, setActualList, idGlobal,setIdGlobal, checkboxList, setCheckboxList } = useContext(AppContext);
+  const [addProduct, setAddProduct] = useState(false)
   function deleteProduct({target}) {          
     const listFiltered = actualList.filter((ids) => (Number(target.value) !== ids.idProduct
     ))
-    setActualList(listFiltered)
-    localStorage.setItem('list', JSON.stringify({
+    const obj = {
       buyList: listFiltered,
       id: idGlobal,
-    }))
+    }
+    setActualList(listFiltered)
+    setLocalStore('list',  obj)
     const checkboxFiltered = checkboxList.filter((elem) => (
       elem !== target.value
     ))
     setCheckboxList(checkboxFiltered)
-    localStorage.setItem('checkbox-items', JSON.stringify(checkboxFiltered))
-      // document.location.reload()
+    setLocalStore('checkbox-items', checkboxFiltered)
   }
 
   
   function cheboxLocal({target}) {
-    if(!checkboxList.some((id) => Number(id) === Number(target.value))) {
-      setCheckboxList([...checkboxList, target.value])
-      localStorage.setItem('checkbox-items', JSON.stringify([...checkboxList, target.value]))
+    const filtered = checkboxList.some((id) => Number(id) === Number(target.value))
+    if(!filtered) {
+      setCheckboxList([...checkboxList, target.value]);
+      setLocalStore('checkbox-items', [...checkboxList, target.value]);
     }
-    if(checkboxList.some((id) => Number(id) === Number(target.value))) {
+    if(filtered) {
       const checkboxFiltered = checkboxList.filter((elem) => (
         elem !== target.value
       ))
-        setCheckboxList(checkboxFiltered)
-      localStorage.setItem('checkbox-items', JSON.stringify(checkboxFiltered))
-    }
-    console.log(checkedBox(target.value))
+        setCheckboxList(checkboxFiltered);
+        setLocalStore('checkbox-items', checkboxFiltered);
+        }
   }
   
   function checkedBox(idvalue) {  
@@ -56,20 +50,22 @@ export default function TodoList() {
     }
   }
 
-  const tableHeader = [
-    "Categoria",
-    "Subcategoria",
-    "Quantidade",
-    "Unidade",
-    "Observação",
-    "Comprado",
-    "Deletar"
-  ]
+  function clearTable() {
+    setIdGlobal(0);
+    setActualList([]);
+    setCheckboxList([]);
+    setLocalStore('checkbox-items', []);
+    setLocalStore('list', {buyList: [], id:0});
+  }
 
   const list = (
-    <div className='="table-list' >
-      <Table responsive striped bordered hover>
-        <thead>
+    <div className={addProduct ? 'add table-list' : 'noAdd table-list'} >
+      <div className='btns-table'>
+        <button className='addProduct-btn' type='button' onClick={() => setAddProduct(!addProduct)}>Adicionar despesa</button>
+        <button type='button'  className='btn-clear' onClick={clearTable}>Limpar Tabela</button>
+      </div>
+      <Table responsive striped  bordered hover>
+        <thead >
             <tr>
               <th>#</th>
               {tableHeader.map((elem, index) => (
@@ -103,8 +99,8 @@ export default function TodoList() {
   )
 
   return (
-    <div>
-      <Header />
+    <div className='main-container'>
+      {addProduct && <Header/>}
       {list}
     </div>
   );

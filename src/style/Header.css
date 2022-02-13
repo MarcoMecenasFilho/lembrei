@@ -1,0 +1,102 @@
+.Forms {
+  background-color: gainsboro;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 110vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 30%;
+}
+.form-div  {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 90vh;
+  margin-top: 50px;
+  width: 90%;
+}
+
+.input {
+  width: 100% !important;
+}
+
+.save {
+  width: 60%;
+  border-radius: 10px;
+  border-style: none;
+}
+
+/* 
+
+.cat-subcat {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 20px !important;
+}
+
+.categories {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  max-width: 60%;
+}
+
+.categories select{ 
+  max-width: 40% ;
+
+}
+
+
+.subcategory {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 40%;
+}
+
+.form-floating   {
+  max-width: 30% !important;
+}
+.subcat {
+  max-width: 48% !important;
+}
+
+
+.units {
+  align-items: center !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.units select {
+  width: 30% !important;
+}
+
+.text-btn {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 100%;
+}  
+
+.btn-text {
+width: 30%;
+}
+
+.text-btn button {
+  border-radius: 10px;
+  border-style: solid black 1px;
+  background-color: white;
+  height: 50px;
+} */
