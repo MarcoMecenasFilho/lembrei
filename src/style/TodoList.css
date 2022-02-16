@@ -168,3 +168,42 @@ td p {
   }
   
 }
+
+@media print {  
+  .main-container {
+    background-color: gainsboro;
+  }
+  .scratched {
+    text-decoration: line-through black;
+    background-color: rgb(102, 255, 0);
+  }
+  .table-list {
+    background-color: white;
+  }
+  
+  .btns-table{
+    background-color: black;
+  }
+  
+  .print{
+    background-color:gray;
+    color: white; 
+  }
+  
+  .btn-clear{
+    background-color: red;
+  }
+  
+  .addProduct-btn {
+    background-color: yellow;
+  }
+  
+  .delete-btn {
+    background-color: rgb(255, 255, 255, 0);
+  }
+  
+  .buy-btn {
+    background-color: rgb(255, 255, 255, 0);
+  }
+  
+}
