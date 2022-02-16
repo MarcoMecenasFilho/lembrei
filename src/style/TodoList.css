@@ -180,6 +180,9 @@ td p {
   .table-list {
     background-color: white;
   }
+  .btns-table {
+    display: none;
+  }
   
   .btns-table{
     background-color: black;
