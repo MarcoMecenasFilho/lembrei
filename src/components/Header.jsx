@@ -5,6 +5,7 @@ import { units, categories } from '../services/datas';
 import Form from 'react-bootstrap/Form';
 import FloatingLabel  from 'react-bootstrap/FloatingLabel';
 import '../style/Header.css';
+import remover from '../images/remover.png';
 
 export default function Header() {
   const [category, setCategory] = useState('')
@@ -17,8 +18,12 @@ export default function Header() {
   const [unit, setUnit] = useState("Kg");
   const [validate, setValidate] =useState(false);
   
-  const {actualList, setActualList, idGlobal,
-    setIdGlobal } = useContext(AppContext);
+  const {actualList,
+    setActualList,
+    idGlobal,
+    setIdGlobal,
+    addProduct, 
+    setAddProduct } = useContext(AppContext);
 
 
   function handleChange({ target }) {
@@ -79,6 +84,9 @@ export default function Header() {
   return (
     <Form onSubmit={ (e) => clickSubmit(e) } className="Forms">
       <div className='form-div'>
+          <button className='close-form' type='button' onClick={() => setAddProduct(!addProduct)}>
+            <img src={remover} alt='delete' />
+          </button>
           <Form.Select    onChange={(e) => handleCategory(e)} name="category" required>
             <option value="categoria">Categoria</option>
             {categories.map((category) => (
@@ -97,13 +105,13 @@ export default function Header() {
             <>
               <FloatingLabel
               controlId="floatingInput"
-              label="Digite a categoria"
+              label="Digitar categoria"
               className="mb-3 input" >
                 <Form.Control  value={categoryText} name="categoryOther" type="text" onChange={ (e) => handleChange(e)} placeholder='Digite a categoria' required />
               </FloatingLabel>
               <FloatingLabel
               controlId="floatingInput"
-              label="Digite o nome"
+              label="Digitar nome"
               className="mb-3 input" >
                 <Form.Control  value={subcategoryText} name="subcategoryOther" type="text" onChange={ (e) => handleChange(e)} placeholder='Digite a subcategoria' required  />
               </FloatingLabel>
@@ -113,7 +121,7 @@ export default function Header() {
             <>
                 <FloatingLabel
               controlId="floatingInput"
-              label="Digite o nome"
+              label="Digitar nome"
               className="mb-3 input">
                 <Form.Control value={subcategoryText} name="subcategoryOther" type="text" onChange={ (e) => handleChange(e)} placeholder='Digite a subcategoria' required  />
               </FloatingLabel>

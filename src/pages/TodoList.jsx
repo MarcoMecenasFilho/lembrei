@@ -5,14 +5,16 @@ import '../style/TodoList.css'
 import Table from 'react-bootstrap/Table';
 import { tableHeader } from '../services/datas';
 import { setLocalStore } from '../services/localStorageFunctions';
-import { useState } from 'react';
+import remover from '../images/remover.png';
+import comprado from '../images/comprado.png';
+import naocomprado from '../images/naocomprado.png';
 
 
 export default function TodoList() {
-  const {actualList, setActualList, idGlobal,setIdGlobal, checkboxList, setCheckboxList } = useContext(AppContext);
-  const [addProduct, setAddProduct] = useState(false)
-  function deleteProduct({target}) {          
-    const listFiltered = actualList.filter((ids) => (Number(target.value) !== ids.idProduct
+  const {actualList, setActualList, idGlobal,setIdGlobal, checkboxList, setCheckboxList,addProduct, 
+    setAddProduct } = useContext(AppContext);
+  function deleteProduct({currentTarget}) {          
+    const listFiltered = actualList.filter((ids) => (Number(currentTarget.value) !== ids.idProduct
     ))
     const obj = {
       buyList: listFiltered,
@@ -21,22 +23,22 @@ export default function TodoList() {
     setActualList(listFiltered)
     setLocalStore('list',  obj)
     const checkboxFiltered = checkboxList.filter((elem) => (
-      elem !== target.value
+      elem !== currentTarget.value
     ))
     setCheckboxList(checkboxFiltered)
     setLocalStore('checkbox-items', checkboxFiltered)
   }
 
   
-  function cheboxLocal({target}) {
-    const filtered = checkboxList.some((id) => Number(id) === Number(target.value))
+  function cheboxLocal({currentTarget}) {
+    const filtered = checkboxList.some((id) => Number(id) === Number(currentTarget.value))
     if(!filtered) {
-      setCheckboxList([...checkboxList, target.value]);
-      setLocalStore('checkbox-items', [...checkboxList, target.value]);
+      setCheckboxList([...checkboxList, currentTarget.value]);
+      setLocalStore('checkbox-items', [...checkboxList, currentTarget.value]);
     }
     if(filtered) {
       const checkboxFiltered = checkboxList.filter((elem) => (
-        elem !== target.value
+        elem !== currentTarget.value
       ))
         setCheckboxList(checkboxFiltered);
         setLocalStore('checkbox-items', checkboxFiltered);
@@ -58,10 +60,20 @@ export default function TodoList() {
     setLocalStore('list', {buyList: [], id:0});
   }
 
+  function iconBuy(idProduct) {
+    const result = checkedBox(idProduct)   
+    if(result) {
+      return comprado
+    }
+    return naocomprado
+  }
+
   const list = (
     <div className={addProduct ? 'add table-list' : 'noAdd table-list'} >
       <div className='btns-table'>
-        <button className='addProduct-btn' type='button' onClick={() => setAddProduct(!addProduct)}>Adicionar despesa</button>
+        <button className='addProduct-btn' type='button' onClick={() => setAddProduct(!addProduct)}>
+          {addProduct ? "Fechar formulário" : "Adicionar despesa"}
+        </button>
         <button type='button'  className='btn-clear' onClick={clearTable}>Limpar Tabela</button>
       </div>
       <Table responsive striped  bordered hover>
@@ -85,10 +97,24 @@ export default function TodoList() {
             <td><p>{elem.unit}</p></td>
             <td><p>{elem.note}</p></td>
             <td>
-              <button type='button ' value={elem.idProduct} onClick={(e) => cheboxLocal(e)}>Comprado</button>
+              <button 
+                className="buy-btn"
+                type='button'
+                value={elem.idProduct}
+                onClick={(e) => cheboxLocal(e)}
+                src={ iconBuy(elem.idProduct) }>
+                  {<img src={iconBuy(elem.idProduct)} alt='comprado'/>}
+              </button>
             </td>
             <td>
-              <button type="button" value={elem.idProduct} onClick={(e) => deleteProduct(e)} >Delete</button>
+              <button
+                type="button"
+                src={remover}
+                className="delete-btn"
+                value={elem.idProduct}
+                onClick={(e) => deleteProduct(e)} >
+                  <img src={remover} alt='button delete'/>
+              </button>
             </td>
           </tr>
       ))}

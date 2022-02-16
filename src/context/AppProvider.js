@@ -8,9 +8,11 @@ export default function AppProvider({ children }) {
   const [actualList, setActualList ] = useState([]);
   const [idGlobal, setIdGlobal] = useState(0)
   const [checkboxList, setCheckboxList] = useState([])
+  const [addProduct, setAddProduct] = useState(true)
 
   useEffect(() => {
     InicialLocalStore(setIdGlobal, setActualList, setCheckboxList);
+    setAddProduct(false);
   }, [])
 
   const context = {
@@ -19,7 +21,9 @@ export default function AppProvider({ children }) {
     idGlobal,
     setIdGlobal,
     checkboxList, 
-    setCheckboxList
+    setCheckboxList,
+    addProduct, 
+    setAddProduct
   };
 
   return (
