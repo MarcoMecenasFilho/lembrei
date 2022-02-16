@@ -8,7 +8,7 @@ import { setLocalStore } from '../services/localStorageFunctions';
 import remover from '../images/remover.png';
 import comprado from '../images/comprado.png';
 import naocomprado from '../images/naocomprado.png';
-import logo from '../images/logo.gif'
+import logo from '../images/logo.gif';
 
 
 export default function TodoList() {
@@ -69,13 +69,32 @@ export default function TodoList() {
     return naocomprado
   }
 
+  function print() {
+    alert(`
+Será aberta a opção de imprimir. 
+
+Caso deseje uma cópia física, deve escolher a
+impressora que preferir.
+
+Para gerar um arquivo, deve se escolher a opção de
+salvar em PDF.
+
+Obs: Para melhor visualização escolher o layout que
+melhor ficam os dados (Retrato/paisagem).
+
+Ir em Mais definições e ativar Gráficos de segundo
+plano e Desativar Cabeçalhos e rodapés.`);
+      window.print();
+  }
+
   const list = (
     <div className={addProduct ? 'add table-list' : 'noAdd table-list'} >
       <div className='btns-table'>
-        <button className='addProduct-btn' type='button' onClick={() => setAddProduct(!addProduct)}>
-          {addProduct ? "Fechar formulário" : "Adicionar despesa"}
-        </button>
-        <button type='button'  className='btn-clear' onClick={clearTable}>Limpar Tabela</button>
+          <button className='addProduct-btn' type='button' onClick={() => setAddProduct(!addProduct)}>
+            {addProduct ? "Fechar formulário" : "Adicionar despesa"}
+          </button>
+          <button type='button'  className='btn-clear' onClick={clearTable}>Limpar Tabela</button>
+        {!addProduct && <button className='print' type='button' onClick={() => print()}>Imprimir</button>}
       </div>
       <Table responsive striped  bordered hover>
         <thead >
