@@ -142,7 +142,7 @@ export default function Header() {
           <Form.Control  as="textarea" placeholder="observação"  value={note} name="note" type="text" onChange={ (e) => handleChange(e)}/>
         </FloatingLabel>
         
-        <button className='save' type='submit'>Salvar</button>
+        <button className='save' type='submit'>Adicionar</button>
         </div>
     </Form>
   );

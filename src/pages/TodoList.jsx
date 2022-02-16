@@ -8,6 +8,7 @@ import { setLocalStore } from '../services/localStorageFunctions';
 import remover from '../images/remover.png';
 import comprado from '../images/comprado.png';
 import naocomprado from '../images/naocomprado.png';
+import logo from '../images/logo.gif'
 
 
 export default function TodoList() {
@@ -125,9 +126,12 @@ export default function TodoList() {
   )
 
   return (
+    <div className='master'>
+      <img src={logo} alt='logo' />
     <div className='main-container'>
       {addProduct && <Header/>}
       {list}
+    </div>
     </div>
   );
 }
