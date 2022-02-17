@@ -143,7 +143,7 @@ plano e Desativar Cabeçalhos e rodapés.`);
     </Table>
   </div>   
   )
-
+  document.title = 'Lembrei!!!'
   return (
     <div className='master'>
       <img src={logo} alt='logo' />
