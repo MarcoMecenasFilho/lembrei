@@ -21,7 +21,7 @@ import Form from 'react-bootstrap/Form'
 export default function TodoList() {
   const {actualList, setActualList, idGlobal,setIdGlobal, checkboxList, setCheckboxList,addProduct, 
     setAddProduct } = useContext(AppContext);
-    const [category, setCategory] = useState('')
+    const [category, setCategory] = useState('todos')
 
 
   function deleteProduct({currentTarget}) {          
