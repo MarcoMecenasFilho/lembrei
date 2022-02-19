@@ -1,10 +1,11 @@
-import React, {useContext} from 'react';
+import React, {useContext, useState} from 'react';
 import Header from '../components/Header';
 import AppContext from '../context/AppContext';
 import '../style/TodoList.css'
 import Table from 'react-bootstrap/Table';
 import { tableHeader } from '../services/datas';
 import { setLocalStore } from '../services/localStorageFunctions';
+import print from '../services/print'
 import remover from '../images/remover.png';
 import comprado from '../images/comprado.png';
 import naocomprado from '../images/naocomprado.png';
@@ -13,11 +14,16 @@ import printer from '../images/printer.png'
 import add from '../images/add.png'
 import trash from '../images/trash.png'
 import closeHeader from '../images/closeHeader.png'
+import { categories } from '../services/datas';
+import Form from 'react-bootstrap/Form'
 
 
 export default function TodoList() {
   const {actualList, setActualList, idGlobal,setIdGlobal, checkboxList, setCheckboxList,addProduct, 
     setAddProduct } = useContext(AppContext);
+    const [category, setCategory] = useState('')
+
+
   function deleteProduct({currentTarget}) {          
     const listFiltered = actualList.filter((ids) => (Number(currentTarget.value) !== ids.idProduct
     ))
@@ -73,23 +79,21 @@ export default function TodoList() {
     return naocomprado
   }
 
-  function print() {
-    alert(`
-Será aberta a opção de imprimir. 
-
-Caso deseje uma cópia física, deve escolher a
-impressora que preferir.
-
-Para gerar um arquivo, deve se escolher a opção de
-salvar em PDF.
-
-Obs: Para melhor visualização escolher o layout que
-melhor ficam os dados (Retrato/paisagem).
-
-Ir em Mais definições e ativar Gráficos de segundo
-plano e Desativar Cabeçalhos e rodapés.`);
-      window.print();
+  function handleCategory({target}) {
+    setCategory(target.value)
   }
+
+  function categoryFilter() {
+const filtered = actualList.filter((categ) => categ.category === category);
+const filteredByText =  actualList.filter((categ) => categ.categoryText);
+    if(category === 'todos') { return actualList}
+    if(category === 'Outros') {return filteredByText}
+    if (filtered) { return filtered }
+    
+    return actualList
+  }
+
+
 
   const list = (
     <div className={addProduct ? 'add table-list' : 'noAdd table-list'} >
@@ -101,6 +105,13 @@ plano e Desativar Cabeçalhos e rodapés.`);
         <button type='button'  className='btn-clear' src={trash} onClick={clearTable}><img className='btn-icon' src={trash} alt='trash'/></button>
         <button className='print' type='button' src={printer} onClick={() => print()}><img src={printer} className='btn-icon'  alt='printer'/></button>
       </div>
+      <Form.Select className='category-filter'   onChange={(e) => handleCategory(e)} name="category">
+            <option value="todos">Filtrar por categoria:</option> 
+            <option value="todos">Todos</option>
+            {categories.map((category) => (
+              <option value={category}>{category}</option>
+            ))}
+          </Form.Select>
       <Table responsive striped  bordered hover>
         <thead >
             <tr>
@@ -111,7 +122,7 @@ plano e Desativar Cabeçalhos e rodapés.`);
             </tr>
         </thead>
       <tbody>
-        {actualList.map((elem, index) => (
+        {categoryFilter().map((elem, index) => (
           <tr key={index} className= {checkedBox(elem.idProduct) && "scratched" } >
             <td><p>{index}</p></td>
             {elem.categoryText === "" ? <td><p>{elem.category}</p></td> :

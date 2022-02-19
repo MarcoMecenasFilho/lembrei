@@ -127,6 +127,12 @@ td p {
   justify-content: center;
 }
 
+.category-filter {
+  align-self: center;
+  width: 90% !important;
+  margin-bottom: 10px;
+}
+
 
 @media screen and (max-width:600px) {
   .btns-table{
@@ -150,6 +156,7 @@ td p {
     width: 70%;
   }
 }
+
 
 @media screen and (max-width:800px) {
   .master-img {
@@ -194,6 +201,7 @@ td p {
     position: relative;
     }
 }
+
 
 @media screen and (min-width:1600px) {
   .delete-btn img{

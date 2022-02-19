@@ -50,6 +50,7 @@ export default function Header() {
   function handleCategory({target}) {
     setCategory(target.value);
     setSubcategories(subcategoryFunction(target.value))
+    setSubcategorySelected('')
     setValidate(true)
   }
 
