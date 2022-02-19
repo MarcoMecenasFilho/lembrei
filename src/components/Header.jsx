@@ -5,7 +5,7 @@ import { units, categories } from '../services/datas';
 import Form from 'react-bootstrap/Form';
 import FloatingLabel  from 'react-bootstrap/FloatingLabel';
 import '../style/Header.css';
-import remover from '../images/remover.png';
+import close from '../images/close.png';
 
 export default function Header() {
   const [category, setCategory] = useState('')
@@ -85,7 +85,7 @@ export default function Header() {
     <Form onSubmit={ (e) => clickSubmit(e) } className="Forms">
       <div className='form-div'>
           <button className='close-form' type='button' onClick={() => setAddProduct(!addProduct)}>
-            <img src={remover} alt='delete' />
+            <img src={close} alt='delete' />
           </button>
           <Form.Select    onChange={(e) => handleCategory(e)} name="category" required>
             <option value="categoria">Categoria</option>

@@ -8,7 +8,11 @@ import { setLocalStore } from '../services/localStorageFunctions';
 import remover from '../images/remover.png';
 import comprado from '../images/comprado.png';
 import naocomprado from '../images/naocomprado.png';
-import logo from '../images/logo.gif';
+import logo from '../images/logo.png';
+import printer from '../images/printer.png'
+import add from '../images/add.png'
+import trash from '../images/trash.png'
+import closeHeader from '../images/closeHeader.png'
 
 
 export default function TodoList() {
@@ -90,11 +94,12 @@ plano e Desativar Cabeçalhos e rodapés.`);
   const list = (
     <div className={addProduct ? 'add table-list' : 'noAdd table-list'} >
       <div className='btns-table'>
-          <button className='addProduct-btn' type='button' onClick={() => setAddProduct(!addProduct)}>
-            {addProduct ? "Fechar formulário" : "Adicionar despesa"}
-          </button>
-          <button type='button'  className='btn-clear' onClick={clearTable}>Limpar Tabela</button>
-        {!addProduct && <button className='print' type='button' onClick={() => print()}>Imprimir</button>}
+        <button src={add} className='addProduct-btn' type='button' onClick={() => setAddProduct(!addProduct)}>
+          {addProduct ?  <img className='btn-icon' src={closeHeader} alt='fechar formulário'/> :
+          <img className='btn-icon' src={add} alt='add'/>}
+        </button>
+        <button type='button'  className='btn-clear' src={trash} onClick={clearTable}><img className='btn-icon' src={trash} alt='trash'/></button>
+        <button className='print' type='button' src={printer} onClick={() => print()}><img src={printer} className='btn-icon'  alt='printer'/></button>
       </div>
       <Table responsive striped  bordered hover>
         <thead >
@@ -146,7 +151,7 @@ plano e Desativar Cabeçalhos e rodapés.`);
   document.title = 'Lembrei!!!'
   return (
     <div className='master'>
-      <img src={logo} alt='logo' />
+      <img className='master-img' src={logo} alt='logo' />
     <div className='main-container'>
       {addProduct && <Header/>}
       {list}

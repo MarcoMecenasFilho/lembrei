@@ -12,7 +12,7 @@ export default function AppProvider({ children }) {
 
   useEffect(() => {
     InicialLocalStore(setIdGlobal, setActualList, setCheckboxList);
-    setAddProduct(false);
+    setAddProduct(true);
   }, [])
 
   const context = {
