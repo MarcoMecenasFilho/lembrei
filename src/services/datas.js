@@ -43,7 +43,7 @@ export const padaria= ["Bolo", "Broinha", "Carolina", "Croissant", "Pão", "Pamo
 
 export const petshop = ["Casa/Transporte","Coleira", "Condicionador","Petisco", "Ração","Remédio", "Roupas", "Shampoo", "Tapete", "Outros"]
 
-export const utilidades = ["Abridor", "Copos","Espremedor", "Forma", "Jarra", "Panela","Pegador","Porta temperos", "Potes", "Prato","Ralador", "Talheres", "Vasilha", "Outros"]
+export const casa = ["Abridor", "Copos","Espremedor", "Forma", "Jarra", "Panela","Pegador","Porta temperos", "Potes", "Prato","Ralador", "Talheres", "Vasilha", "Outros"]
 
 export const mercearia = ["Açucar","Adoçante", "Arroz", "Azeite","Azeitona", "Batata palha","Bolacha","Cereal", "Chocolate","Condimentos", "Creme de leite","Doce", "Farinha","Farofa", "Feijão","Ketchup", "Leite  condensado","Macarrão", 
 "Margarina", "Maionese","Massas", "Molho/Extrato de tomate", "Mostarda", "Óleo", "Sal","Sopa/Creme", "Tempero",  "Outros"]
@@ -51,6 +51,6 @@ export const mercearia = ["Açucar","Adoçante", "Arroz", "Azeite","Azeitona", "
 export const units = ["Kg", "g", "Unidade", "Cx", "L", "mL", "Pacote",];
 
 export const categories = 
-["Bebidas","Carnes", "Frios", "Higiene", "Hortifruti","Laticínios", 
-  "Limpeza",  "Mercearia", "Padaria", "PetShop", "Utilidades_Domésticas",
+["Bebidas","Carnes", "Casa", "Frios", "Higiene", "Hortifruti","Laticínios", 
+  "Limpeza",  "Mercearia", "Padaria", "PetShop",
   "Outros",];

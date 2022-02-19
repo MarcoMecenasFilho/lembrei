@@ -1,5 +1,5 @@
 import { bebidas, carnes, frios, higiene, hotifruti,
-  laticinios, limpeza, mercearia, padaria, petshop, utilidades} from '../services/datas'
+  laticinios, limpeza, mercearia, padaria, petshop, casa} from '../services/datas'
 
 const subcategoryObj = {
   categoria: [],
@@ -13,7 +13,7 @@ const subcategoryObj = {
   Mercearia: mercearia, 
   Padaria: padaria, 
   PetShop: petshop, 
-  Utilidades_Domésticas: utilidades,
+  Casa: casa,
   Outros: [],
 }
 
