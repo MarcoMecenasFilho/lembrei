@@ -263,5 +263,10 @@ td p {
   .delete-btn {
     background-color: rgb(255, 255, 255, 0);
   }
+
+  select.category-filter.form-select {
+    display: none !important;
+  }
+  
   
 }
