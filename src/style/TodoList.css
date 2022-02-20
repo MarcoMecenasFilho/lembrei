@@ -157,6 +157,23 @@ td p {
   }
 }
 
+footer {
+align-items: center;
+background-color: rgb(169, 217, 203);
+display: flex;
+justify-content: center;
+margin: 0;
+}
+
+footer p a {
+  text-decoration: none;
+  color: black;
+  font-weight: 600;
+}
+
+footer p {
+  margin: 0;
+}
 
 @media screen and (max-width:800px) {
   .master-img {

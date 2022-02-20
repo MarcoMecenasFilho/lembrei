@@ -1,70 +1,83 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<img src='./src/images/logo.gif' width="100%">
 
-## Available Scripts
+<h1 align="center">Lembrei!!! - Lista de Compras</h1>
+<h4 align="center"> 
+	🚧  Lembrei!!! - Lista de Compras 🚀 Finalizado  🚧
+</h4>
+<br>
+<h2>Sobre</h2>
+<p align="justify"> Lembrei!!! - Lista de Compras - É uma aplicação desenvolvida para
+que aqueles momentos que estamos fazendo nossas compras e simplismente esquecemos o que comprar, ou quando chegamos em casa e percebemos que esquecemos de varios itens, nunca mais aconteça. </p 
 
-In the project directory, you can run:
+### Features
 
-### `npm start`
+-  Cadastro de compras
+-  Escolha por categorias
+-  Possibilidade de categorias personalizadas
+-  marcação de compras já realizadas
+-  Compras salvas localmente
+-  Filtrar as compras cadastradas por categoria
+-  Possibilidade de salvar a lista e assim imprimir ou compartilhar
+<br>
+## 🛠 Tecnologias
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+As seguintes ferramentas foram utilizadas na construção do projeto:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- [React](https://pt-br.reactjs.org/)
+- [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Language_Resources)
+- [React-BootStrap](https://react-bootstrap.github.io/)
+- [Node.js](https://nodejs.org/en/)
 
-### `npm test`
+<h2>Testar o projeto</h2>
+<h4>Clique na imagem abaixo</h4>
+<br>
+<div align="center">
+<a  href="https://lembrei.vercel.app/" target="_blank"><img width="40%" src="https://www.svgrepo.com/show/327408/logo-vercel.svg" /></a> 
+</div>
+<br>
+<h2>Instalar o projeto em sua máquina</h2>
+<br>
+<h3>Pré-requisitos</h3>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
+[Git](https://git-scm.com) e [Node.js](https://nodejs.org/en/). É necessário a utilização de um editor de código, e como recomendação deixo o [VSCode](https://code.visualstudio.com/).
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+###  Rodando a aplicação web.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+# Clone este repositório
+# Foi utilizado SSH
+$ git clone git@github.com:MarcoMecenasFilho/lembrei.git
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# Acesse a pasta do projeto no seu terminal/cmd
+$ cd lembrei
+# Instale as dependências
+$ npm install
 
-### `npm run eject`
+# Execute a aplicação em modo de desenvolvimento
+$ npm run dev
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+# A aplicação será aberta na porta:3000 - acesse http://localhost:3000
+```
+<h2>Utilizando a aplicação</h2>
+<p align="justify"> - A aplicação funcionada de maneira muito simples. Temos um formulário e uma tabela. Para adicionar uma compra, basta preencher os campos e clicar em salvar.</p>
+<img src='./src/images/adicionar.gif' width="100%">
+<br>
+<p align="justify"> - Para criar uma categoria personalizada basta clicar em outros. Assim sera possível
+digitar o nome da categoria e do produto. Mas caso a categoria exista e o produto desejado não, basta clicar em outros no nome que sera possível digitar o produto personalizado. </p>
+<img src='./src/images/categoriaperso.gif' width="100%">
+<br>
+<p align="justify"> - Dentro da tabela de compras, é possível marcar e desmarcar como comprado e excluir aquela compra.</p>
+<img src='./src/images/delete.gif' width="100%">
+<br>
+<p align="justify"> - Com os botões superiores, é possível abrir e fechar o formulário, limpar a tabela e imprimir a lista. </p>
+<img src='./src/images/button.gif' width="100%">
+<br>
+<p align="justify"> - Para obter um bom documento para imprimir ou compartilhar a lista, é necessario selecionar o melhor layout, sendo paisagem ou retrato.</p>
+<img src='./src/images/print.gif' width="100%">
+<br>
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+ - Este projeto foi feito com muita dedicação e carinho por Marco Mecenas  [Entre em contato!](https://www.linkedin.com/in/marcomecenasfilho/).

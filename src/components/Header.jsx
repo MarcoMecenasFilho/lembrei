@@ -51,6 +51,8 @@ export default function Header() {
     setCategory(target.value);
     setSubcategories(subcategoryFunction(target.value))
     setSubcategorySelected('')
+    setCategoryText("");
+    setSubcategoryText("");
     setValidate(true)
   }
 
@@ -74,7 +76,6 @@ export default function Header() {
       buyList: newProduct,
       id: idGlobal + 1,
     }))
-    setCategoryText("");
     setSubcategoryText("");
     setNote('');
     setUnit("Kg");

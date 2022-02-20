@@ -163,10 +163,13 @@ const filteredByText =  actualList.filter((categ) => categ.categoryText);
   return (
     <div className='master'>
       <img className='master-img' src={logo} alt='logo' />
-    <div className='main-container'>
-      {addProduct && <Header/>}
-      {list}
-    </div>
+      <div className='main-container'>
+        {addProduct && <Header/>}
+        {list}
+      </div>
+      <footer>
+        <p>Feito por <a href='https://www.linkedin.com/in/marcomecenasfilho/' target="_blank" rel="noreferrer">Marco Mecenas</a> com React, BootStrap, CSS e &#10084; </p>
+      </footer>
     </div>
   );
 }
