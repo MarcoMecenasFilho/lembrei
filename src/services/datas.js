@@ -35,8 +35,8 @@ export const laticinios = ["Iogorte",
   "Leite", "Manteiga", "Queijo", "Requeijão", "Outros",
 ]
 
-export const limpeza = ["Álcool", "Amaciante", "Alvejante", "Balde", "Cera", "Cloro", "Desinfetante", "Detergente", "Escova", "Pano", 
-"Papel Toalha", "Rodo",  "Sabão em pó","Vasoura",
+export const limpeza = ["Álcool", "Amaciante", "Alvejante", "Balde", "Cera", "Cloro", "Desinfetante", "Detergente", "Escova","Esponja", "Pano", 
+"Papel Toalha", "Rodo",  "Sabão em pó","Vasoura", "Outros",
 ]
 
 export const padaria= ["Bolo", "Broinha", "Carolina", "Croissant", "Pão", "Pamonha", "Pudim", "Rocambole", "Salgado", "Waffle", "Outros"]
